@@ -44,7 +44,9 @@ header {
 }
 
 .logo-img {
-    width: 220px;
+    width: 130px;
+
+
     max-width: 90%;
     height: auto;
     margin-bottom: 15px;
@@ -408,6 +410,16 @@ footer p {
 footer strong {
     color: var(--text-main);
 }
+
+.footer-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    filter: brightness(0.9);
+    mix-blend-mode: screen;
+}
+
 
 @media (max-width: 600px) {
     h1 {
