@@ -317,8 +317,8 @@ input[type="radio"] {
     display: none;
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px solid var(--glass-border);
 }
+
 
 .toggle {
     margin-top: 12px;
