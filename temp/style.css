@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #eef2ff, #ffffff);
+    color: #000;
+}
+
+/* TEXT */
+body, h1, h3, h4, p, label, li, span {
+    color: #000;
+}
+
+/* ✅ UPDATED CONTAINER COLOR */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+
+    background: rgba(59, 130, 246, 0.12); /* same as limited-slot */
+    border-radius: 16px;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo-img {
+    width: 120px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+h1 {
+    margin: 5px 0;
+    letter-spacing: 3px;
+    font-size: 32px;
+
+    background: linear-gradient(90deg, #1e3a8a, #4338ca);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle { color: #444; }
+.subtext { color: #666; font-size: 14px; }
+
+/* LIMITED SLOT */
+.limited-slot {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1e3a8a;
+    background: rgba(59, 130, 246, 0.12);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        rgba(49, 46, 129, 0.20),
+        rgba(88, 28, 135, 0.18),
+        rgba(37, 99, 235, 0.18)
+    );
+
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 16px;
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(99,102,241,0.12), transparent 70%);
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+/* ✅ FIXED INPUT PADDING */
+input, textarea, select {
+    width: 100%;
+    padding: 10px 12px; /* equal left & right */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 80px;
+}
+
+/* BUTTON */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1e3a8a, #4338ca);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* PACKAGE */
+.package {
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.package:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.package ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.extra {
+    display: none;
+}
+
+.toggle {
+    cursor: pointer;
+    display: flex;
+    gap: 6px;
+}
+
+.arrow {
+    transition: 0.3s;
+}
+
+.toggle.active .arrow {
+    transform: rotate(180deg);
+}
+
+.package.selected {
+    border: 2px solid #000;
+}

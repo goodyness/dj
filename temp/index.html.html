@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tolani Baj Academy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <img src="logo.png" class="logo-img">
+    <h1>TOLANI BAJ ACADEMY</h1>
+
+    <p class="subtitle">Fill the form to begin your DJ journey</p>
+    <p class="subtext">8 Weeks Program: June 1st - July 31st, 2026</p>
+
+    <p class="limited-slot">⚡ Limited Slots Available — Registration Closes Soon</p>
+</header>
+
+<main class="grid">
+
+<section class="card">
+    <h3>Bio</h3>
+    <p>We are a professional training program dedicated to building the next generation of DJs.</p>
+</section>
+
+<section class="card">
+    <h3>Personal Information</h3>
+
+    <label>Full Name</label>
+    <input type="text">
+
+    <label>Email Address</label>
+    <input type="email">
+
+    <label>Phone Number</label>
+    <input type="tel">
+
+    <label>Address</label>
+    <input type="text">
+
+    <label>Date of Birth</label>
+    <input type="date">
+
+    <label>Favorite Color</label>
+    <input type="text">
+
+    <label>What’s your DJ name (or what would it be)?</label>
+    <input type="text">
+
+    <label>How did you hear about us?</label>
+    <input type="text">
+</section>
+
+<section class="card">
+
+    <label>Why do you want to DJ? Be honest 👀</label>
+    <textarea></textarea>
+
+    <label>Where do you see yourself after these 8 weeks?</label>
+    <textarea></textarea>
+
+    <label>Can you commit to 3 days weekly?</label>
+    <select>
+        <option>Yes</option>
+        <option>No</option>
+    </select>
+</section>
+
+<section class="card">
+    <h3>Experience Level</h3>
+    <label><input type="radio" name="exp"> No Experience</label>
+    <label><input type="radio" name="exp"> Beginner</label>
+    <label><input type="radio" name="exp"> Intermediate</label>
+    <label><input type="radio" name="exp"> Advanced</label>
+</section>
+
+<section class="card">
+    <h3>Packages</h3>
+
+    <h4>Registration fee cost ₦20,000.</h4>
+
+    <div class="package" onclick="selectPackage('standard')">
+        <label>
+            <input type="radio" name="package" id="standard" value="standard">
+            <strong>🟡 STANDARD — ₦450,000</strong>
+        </label>
+
+        <ul>
+            <li>8-week DJ training</li>
+            <li>Hands-on practice</li>
+            <li>Access to equipment</li>
+
+            <div class="extra">
+                <li>Graduation certificate</li>
+            </div>
+        </ul>
+
+        <div class="toggle" onclick="togglePackage(event, this)">
+            <span>See more</span>
+            <span class="arrow">▼</span>
+        </div>
+    </div>
+
+    <div class="package" onclick="selectPackage('premium')">
+        <label>
+            <input type="radio" name="package" id="premium" value="premium">
+            <strong>🔴 PREMIUM — ₦650,000</strong>
+        </label>
+
+        <ul>
+            <li>8-week DJ training</li>
+            <li>Hands-on practice</li>
+            <li>Access to equipment</li>
+
+            <div class="extra">
+                <li>Serato DJ license</li>
+                <li>Content support</li>
+                <li>Branding guidance</li>
+                <li>Live performance</li>
+                <li>Merchandise</li>
+                <li>Graduation certificate</li>
+            </div>
+        </ul>
+
+        <div class="toggle" onclick="togglePackage(event, this)">
+            <span>See more</span>
+            <span class="arrow">▼</span>
+        </div>
+    </div>
+
+</section>
+
+<section class="card">
+
+    <label>
+        <input type="checkbox" id="confirm">
+        I confirm all information is correct
+    </label>
+
+    <button class="btn-submit" onclick="payNow()">Pay Now</button>
+
+</section>
+
+</main>
+
+</div>
+
+<script>
+function togglePackage(e, el) {
+    e.stopPropagation();
+    const extra = el.previousElementSibling.querySelector('.extra');
+
+    if (extra.style.display === "block") {
+        extra.style.display = "none";
+        el.classList.remove("active");
+        el.querySelector("span").textContent = "See more";
+    } else {
+        extra.style.display = "block";
+        el.classList.add("active");
+        el.querySelector("span").textContent = "See less";
+    }
+}
+
+function selectPackage(id) {
+    document.getElementById(id).checked = true;
+
+    document.querySelectorAll('.package').forEach(p => {
+        p.classList.remove('selected');
+    });
+
+    document.getElementById(id).closest('.package').classList.add('selected');
+}
+
+function payNow() {
+    const selected = document.querySelector('input[name="package"]:checked');
+    const confirm = document.getElementById('confirm').checked;
+
+    if (!selected) {
+        alert("Please select a package.");
+        return;
+    }
+
+    if (!confirm) {
+        alert("Please confirm your information.");
+        return;
+    }
+
+    const links = {
+        standard: "https://paystack.com/pay/standard-link",
+        premium: "https://paystack.com/pay/premium-link"
+    };
+
+    window.location.href = links[selected.value];
+}
+</script>
+
+</body>
+</html>

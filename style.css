@@ -1,14 +1,14 @@
 :root {
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --secondary: #a855f7;
-    --accent: #f59e0b;
-    --bg-dark: #0f172a;
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --primary: #1e3a8a;
+    --primary-hover: #2563eb;
+    --secondary: #4338ca;
+    --accent: #3b82f6;
+    --bg-dark: #ffffff;
+    --bg-card: linear-gradient(135deg, rgba(49, 46, 129, 0.08), rgba(88, 28, 135, 0.06), rgba(37, 99, 235, 0.06));
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --glass-border: rgba(30, 58, 138, 0.1);
+    --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 
 * {
@@ -21,8 +21,7 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-dark);
     background-image: 
-        radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0, transparent 50%);
+        radial-gradient(circle at top, #eef2ff, #ffffff);
     color: var(--text-main);
     line-height: 1.6;
     min-height: 100vh;
@@ -50,8 +49,8 @@ header {
     max-width: 90%;
     height: auto;
     margin-bottom: 15px;
-    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
-    mix-blend-mode: screen;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+    /* mix-blend-mode: screen; */
     transition: transform 0.3s ease;
 }
 
@@ -111,8 +110,8 @@ h1 {
 .step-dot {
     width: 12px;
     height: 12px;
-    background: var(--bg-dark);
-    border: 2px solid var(--glass-border);
+    background: #e2e8f0;
+    border: 1px solid var(--glass-border);
     border-radius: 50%;
     transition: all 0.3s ease;
 }
@@ -139,9 +138,9 @@ h1 {
     margin-top: 10px;
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    color: var(--accent);
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--primary);
     border-radius: 99px;
     font-size: 0.85rem;
     font-weight: 700;
@@ -170,16 +169,17 @@ h1 {
 
 .card {
     background: var(--bg-card);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-    border-color: rgba(99, 102, 241, 0.4);
+    border-color: rgba(30, 58, 138, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
 h3 {
@@ -207,10 +207,10 @@ textarea,
 select {
     width: 100%;
     padding: 12px 16px;
-    background: rgba(15, 23, 42, 0.5);
-    border: 1px solid var(--glass-border);
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
     border-radius: 12px;
-    color: var(--text-main);
+    color: #0f172a;
     font-size: 1rem;
     transition: all 0.3s ease;
     margin-bottom: 16px;
@@ -220,7 +220,7 @@ input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: var(--primary);
     background: rgba(15, 23, 42, 0.8);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.05);
 }
 
 .radio-group {
@@ -270,14 +270,14 @@ input[type="radio"] {
 
 .package.selected {
     border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.05);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+    background: rgba(30, 58, 138, 0.08);
+    box-shadow: 0 0 20px rgba(30, 58, 138, 0.15);
 }
 
 .package.premium.selected {
     border-color: var(--secondary);
-    background: rgba(168, 85, 247, 0.05);
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+    background: rgba(67, 56, 202, 0.08);
+    box-shadow: 0 0 20px rgba(67, 56, 202, 0.15);
 }
 
 .package h4 {
@@ -300,7 +300,7 @@ input[type="radio"] {
 
 .package-features li {
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: #64748b;
     margin-bottom: 6px;
     display: flex;
     align-items: center;
@@ -341,12 +341,12 @@ input[type="radio"] {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
 }
 
 .btn-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.6);
 }
 
 .btn-submit:active {
@@ -397,9 +397,9 @@ input[type="radio"] {
 footer {
     margin-top: 60px;
     padding-top: 30px;
-    border-top: 1px solid var(--glass-border);
+    border-top: 1px solid #e2e8f0;
     text-align: center;
-    color: var(--text-muted);
+    color: #64748b;
     font-size: 0.85rem;
 }
 
@@ -415,9 +415,9 @@ footer strong {
     width: 120px;
     height: auto;
     margin-bottom: 15px;
-    opacity: 0.8;
-    filter: brightness(0.9);
-    mix-blend-mode: screen;
+    opacity: 1;
+    filter: none;
+    /* mix-blend-mode: screen; */
 }
 
 .footer-socials {
