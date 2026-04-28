@@ -240,11 +240,17 @@ input:focus, textarea:focus, select:focus {
     border-color: var(--primary);
     background: rgba(15, 23, 42, 0.8);
     box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.05);
+    color: #ffffff;
+}
+
+input:focus::placeholder, 
+textarea:focus::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .radio-group {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
 
@@ -482,6 +488,6 @@ footer strong {
     }
     
     .radio-group {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
