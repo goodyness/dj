@@ -10,29 +10,131 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .checkout-container {
-            max-width: 900px;
+            max-width: 600px;
             margin: 40px auto;
             text-align: center;
         }
 
-        .widget-wrapper {
+        .payment-card {
             background: var(--bg-card);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             border-radius: 32px;
-            padding: 10px;
+            padding: 40px 30px;
             margin-top: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            min-height: 820px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
 
-        iframe {
-            width: 100%;
-            min-height: 800px;
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 25px;
+        }
+
+        .summary-item h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .bank-info-box {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .bank-info-box h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn {
+            background: none;
             border: none;
-            border-radius: 24px;
-            display: block;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            padding: 18px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4);
+            background: #20ba5a;
+        }
+
+        .instruction-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.5;
         }
 
         .back-link {
@@ -52,18 +154,27 @@
 
         .plan-badge {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 6px 16px;
             background: var(--primary);
             color: white;
             border-radius: 99px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .plan-badge.premium {
             background: var(--secondary);
+        }
+
+        @media (max-width: 480px) {
+            .payment-card {
+                padding: 30px 20px;
+            }
+            .price-tag {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -76,17 +187,51 @@
         <header>
             <div class="brand-group">
                 <img src="logo.png" class="logo-img" alt="Tolani Baj Academy Logo">
-                <h1>SECURE CHECKOUT</h1>
+                <h1>PAYMENT DETAILS</h1>
             </div>
             <div id="plan-badge-container"></div>
-            <p class="subtitle">Complete your payment to secure your slot</p>
+            <p class="subtitle">Transfer the exact amount to secure your slot</p>
         </header>
 
-        <div class="widget-wrapper" id="widget-container"></div>
+        <div class="payment-card">
+            <div class="summary-item">
+                <h3 id="plan-name-display">Package Selected</h3>
+                <div class="price-tag" id="price-display">₦0</div>
+            </div>
 
-        <p style="margin-top: 30px; color: var(--text-muted); font-size: 0.9rem;">
-            Payment secured by <strong>BursaPay</strong>. Your data is encrypted and safe.
-        </p>
+            <div class="bank-info-box">
+                <h4>Bank Account Details</h4>
+                
+                <div class="info-row">
+                    <span class="info-label">Account Name</span>
+                    <span class="info-value">Tolani Baj Academy</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">Account Number</span>
+                    <span class="info-value">
+                        <span id="account-number">4005386434</span>
+                        <button class="copy-btn" onclick="copyToClipboard('4005386434', this)" title="Copy Account Number">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">Bank Name</span>
+                    <span class="info-value">Moniepoint</span>
+                </div>
+            </div>
+
+            <a href="#" id="whatsapp-link" class="whatsapp-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-2.32 0-4.518.892-6.193 2.512-3.418 3.291-3.418 8.644 0 11.935l-1.077 3.93 4.137-1.053c1.026.544 2.164.831 3.324.831 2.321 0 4.516-.893 6.191-2.513s2.61-3.774 2.61-5.966c0-2.19-.875-4.246-2.463-5.78s-3.791-2.396-5.932-2.396zm5.42 11.53c-.22.601-1.282 1.102-1.762 1.153-.48.05-.963.263-3.072-.544-2.541-1.002-4.148-3.508-4.272-3.666-.123-.158-1.01-1.31-1.01-2.496 0-1.186.617-1.762.837-2.002.22-.24.48-.301.64-.301s.32 0 .46.01c.15.01.352-.06.551.41.2.471.681 1.623.741 1.743.061.121.101.261.02.421-.08.16-.12.261-.241.401-.12.14-.251.311-.36.421-.12.12-.241.25-.101.491.14.24.621 1.002 1.332 1.623.912.802 1.683 1.052 1.923 1.173.24.12.38.101.521-.061.14-.16.601-.681.762-.922.16-.24.32-.2.541-.121.22.08 1.403.641 1.642.762.24.121.401.181.46.281.06.1.06.581-.16 1.182z"/></svg>
+                I have made the payment
+            </a>
+
+            <p class="instruction-text">
+                After making the transfer, please click the button above to upload your receipt on WhatsApp for confirmation.
+            </p>
+        </div>
 
         <footer>
             <img src="logo2.png" class="footer-logo" alt="Academy Logo">
@@ -104,33 +249,58 @@
 
         </footer>
 
-
-
     </div>
 
     <script>
+        function copyToClipboard(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                }, 2000);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const plan = urlParams.get('plan');
-            const container = document.getElementById('widget-container');
+            const plan = urlParams.get('plan') || 'standard';
             const badgeContainer = document.getElementById('plan-badge-container');
+            const priceDisplay = document.getElementById('price-display');
+            const planNameDisplay = document.getElementById('plan-name-display');
+            const whatsappLink = document.getElementById('whatsapp-link');
 
-            const widgets = {
-                standard: '<iframe src="https://bursapay.com/pay/widget/EFN6y71CPPNGqVia/" style="width: 100%; min-height: 800px; border: none; border-radius: 2rem;" allowpaymentrequest="true"></iframe>',
-                premium: '<iframe src="https://bursapay.com/pay/widget/wf8fXEznQmlGFBRi/" style="width: 100%; min-height: 800px; border: none; border-radius: 2.5rem;" allowpaymentrequest="true"></iframe>'
+            const planDetails = {
+                standard: {
+                    name: 'Standard Package',
+                    price: '₦475,000',
+                    amount: '475,000'
+                },
+                premium: {
+                    name: 'Premium Package',
+                    price: '₦675,000',
+                    amount: '675,000'
+                }
             };
 
-            if (plan && widgets[plan]) {
-                container.innerHTML = widgets[plan];
-                const badge = document.createElement('div');
-                badge.className = `plan-badge ${plan}`;
-                badge.textContent = `${plan} Package`;
-                badgeContainer.appendChild(badge);
-            } else {
-                container.innerHTML = '<div class="card"><p>Invalid plan selected. Please <a href="index.html" style="color: var(--primary);">go back</a> and select a package.</p></div>';
-            }
+            const selectedPlan = planDetails[plan.toLowerCase()] || planDetails.standard;
+            
+            // Update UI
+            priceDisplay.textContent = selectedPlan.price;
+            planNameDisplay.textContent = selectedPlan.name;
+
+            const badge = document.createElement('div');
+            badge.className = `plan-badge ${plan.toLowerCase()}`;
+            badge.textContent = selectedPlan.name;
+            badgeContainer.appendChild(badge);
+
+            // WhatsApp Message
+            const whatsappNumber = '2347071813399';
+            const message = encodeURIComponent(`Hi Tolani Baj Academy, I've just paid for the ${selectedPlan.name}. Here is my transaction receipt: `);
+            whatsappLink.href = `https://wa.me/${whatsappNumber}?text=${message}`;
         });
     </script>
+
 
 </body>
 </html>

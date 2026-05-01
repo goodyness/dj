@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Tolani Baj Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container {
+            max-width: 900px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .widget-wrapper {
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 10px;
+            margin-top: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-height: 820px;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 800px;
+            border: none;
+            border-radius: 24px;
+            display: block;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .plan-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary);
+            color: white;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .plan-badge.premium {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container checkout-container">
+        <a href="index.html" class="back-link">← Back to Registration</a>
+
+        <header>
+            <div class="brand-group">
+                <img src="logo.png" class="logo-img" alt="Tolani Baj Academy Logo">
+                <h1>SECURE CHECKOUT</h1>
+            </div>
+            <div id="plan-badge-container"></div>
+            <p class="subtitle">Complete your payment to secure your slot</p>
+        </header>
+
+        <div class="widget-wrapper" id="widget-container"></div>
+
+        <p style="margin-top: 30px; color: var(--text-muted); font-size: 0.9rem;">
+            Payment secured by <strong>BursaPay</strong>. Your data is encrypted and safe.
+        </p>
+
+        <footer>
+            <img src="logo2.png" class="footer-logo" alt="Academy Logo">
+            <p>&copy; 2026 Tolani Baj Academy. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="mailto:tbajacademy@gmail.com">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>Email Us</span>
+                </a>
+                <a href="https://wa.me/2347071813399">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <span>Send us message</span>
+                </a>
+            </div>
+
+        </footer>
+
+
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan');
+            const container = document.getElementById('widget-container');
+            const badgeContainer = document.getElementById('plan-badge-container');
+
+            const widgets = {
+                standard: '<iframe src="https://bursapay.com/pay/widget/EFN6y71CPPNGqVia/" style="width: 100%; min-height: 800px; border: none; border-radius: 2rem;" allowpaymentrequest="true"></iframe>',
+                premium: '<iframe src="https://bursapay.com/pay/widget/wf8fXEznQmlGFBRi/" style="width: 100%; min-height: 800px; border: none; border-radius: 2.5rem;" allowpaymentrequest="true"></iframe>'
+            };
+
+            if (plan && widgets[plan]) {
+                container.innerHTML = widgets[plan];
+                const badge = document.createElement('div');
+                badge.className = `plan-badge ${plan}`;
+                badge.textContent = `${plan} Package`;
+                badgeContainer.appendChild(badge);
+            } else {
+                container.innerHTML = '<div class="card"><p>Invalid plan selected. Please <a href="index.html" style="color: var(--primary);">go back</a> and select a package.</p></div>';
+            }
+        });
+    </script>
+
+</body>
+</html>
