@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tolani Baj Academy | Join the Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="brand-group">
+            <img src="logo.png" class="logo-img" alt="Tolani Baj Academy Logo">
+            <h1>TOLANI BAJ ACADEMY</h1>
+        </div>
+
+        <p class="subtitle">We are a professional training program dedicated to developing the next generation of DJs.</p>
+        <p class="program-info">8 Weeks Professional DJ Program <br> 1st June - 31st July, 2026</p>
+        <div class="limited-slot">⚡ Limited Slots Available — Registration Closes Soon</div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+            <div class="steps-indicator">
+                <div class="step-dot active" data-step="1"></div>
+                <div class="step-dot" data-step="2"></div>
+                <div class="step-dot" data-step="3"></div>
+                <div class="step-dot" data-step="4"></div>
+            </div>
+        </div>
+    </header>
+
+    <form id="academy-form" action="https://submit-form.com/S4j7c4go0">
+        <input type="hidden" name="_redirect" value="false">
+        <input type="hidden" name="_append" value="false">
+        <input type="hidden" name="Status" value="User initiated payment. Check your dashboard on BursaPay for updates.">
+        
+        <main id="registration-form">
+
+        <section class="step active" id="step-1">
+            <div class="card">
+                <p>Fill the information below to begin your Disc Jockey journey</p>
+            </div>
+
+            <div class="card">
+                <h3><span></span> Personal Information</h3>
+                
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="full_name" name="Full Name" placeholder="John Doe">
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" name="Email" placeholder="john@example.com">
+                </div>
+
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" name="Phone" placeholder="+234 ...">
+                </div>
+
+                <div class="input-group">
+                    <label>Address</label>
+                    <input type="text" id="address" name="Address" placeholder="Your residential address">
+                </div>
+
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="input-group">
+                        <label>Date of Birth</label>
+                        <input type="date" id="dob" name="DOB">
+                    </div>
+                    <div class="input-group">
+                        <label>Favorite Color</label>
+                        <input type="text" id="fav_color" name="Favorite Color" placeholder="e.g. Blue">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Shirt Size</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="Shirt Size" value="S"> S
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="Shirt Size" value="M"> M
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="Shirt Size" value="L"> L
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="Shirt Size" value="XL"> XL
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <div></div>
+                <button type="button" class="btn-nav" onclick="nextStep(1)">Next Step →</button>
+            </div>
+        </section>
+
+        <section class="step" id="step-2">
+            <div class="card">
+                <h3><span>💡</span> Motivation & Commitment</h3>
+
+                <div class="input-group">
+                    <label>What’s your DJ name (or what would it be)?</label>
+                    <input type="text" id="dj_name" name="DJ Name" placeholder="DJ ...">
+                </div>
+
+                <div class="input-group">
+                    <label>How did you hear about us?</label>
+                    <input type="text" id="referral" name="Referral" placeholder="Instagram, Friend, etc.">
+                </div>
+
+                <div class="input-group">
+                    <label>Why do you want to DJ? Be honest 👀</label>
+                    <textarea id="motivation" name="Motivation" placeholder="Tell us your story..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Where do you see yourself after these 8 weeks?</label>
+                    <textarea id="goals" name="Goals" placeholder="Your goals and aspirations..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Can you commit to 3 days weekly?</label>
+                    <select id="commitment" name="Commitment">
+                        <option value="yes">Yes, I'm fully committed</option>
+                        <option value="no">No, I have scheduling conflicts</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button type="button" class="btn-nav btn-back" onclick="prevStep(2)">← Back</button>
+                <button type="button" class="btn-nav" onclick="nextStep(2)">Next Step →</button>
+            </div>
+        </section>
+
+        <section class="step" id="step-3">
+            <div class="card">
+                <h3><span>🎧</span> Experience Level</h3>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">Tell us about your current skill level so we can better tailor your experience.</p>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="exp" value="none"> No Experience
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="exp" value="beginner"> Beginner
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="exp" value="intermediate"> Intermediate
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="exp" value="advanced"> Advanced
+                    </label>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button type="button" class="btn-nav btn-back" onclick="prevStep(3)">← Back</button>
+                <button type="button" class="btn-nav" onclick="nextStep(3)">Next Step →</button>
+            </div>
+        </section>
+
+        <section class="step" id="step-4">
+            <div class="card">
+                <h3><span>💎</span> Select Your Package</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Registration fee: ₦25,000 (Included in package)</p>
+
+                <div class="packages-grid">
+                    <div class="package standard" onclick="selectPackage('standard')">
+                        <input type="radio" name="package" id="standard" value="standard" style="display: none;">
+                        <h4>
+                            <span>STANDARD</span>
+                            <span class="package-price">₦450,000</span>
+                        </h4>
+                        <ul class="package-features">
+                            <li>8-week DJ training program</li>
+                            <li>Hands-on practice</li>
+                            <li>Access to equipment</li>
+                            <li>Graduation certificate</li>
+                        </ul>
+                        
+                    </div>
+
+                    <div class="package premium" onclick="selectPackage('premium')">
+                        <input type="radio" name="package" id="premium" value="premium" style="display: none;">
+                        <h4>
+                            <span>PREMIUM</span>
+                            <span class="package-price">₦650,000</span>
+                        </h4>
+                        <ul class="package-features">
+                            <li>8-week DJ training program</li>
+                            <li>Hands-on practice</li>
+                            <li>Access to equipment</li>
+                            <li>Serato DJ Pro license</li>
+                            <li>Content creation support</li>
+                            <li>Personal branding guidance</li>
+                            <li>Live performance opportunity</li>
+                            <li>Exclusive academy merch</li>
+                            <li>Graduation certificate</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="confirm">
+                    <span>I confirm that all information provided is accurate and I agree to the terms of the academy.</span>
+                </label>
+
+                <button type="button" class="btn-submit" id="submit-btn" onclick="submitRegistration()">Proceed to Payment</button>
+            </div>
+
+            <div class="nav-buttons">
+                <button type="button" class="btn-nav btn-back" onclick="prevStep(4)">← Back</button>
+                <div></div>
+            </div>
+        </section>
+
+    </main>
+    </form>
+
+    <footer>
+        <img src="logo2.png" class="footer-logo" alt="Academy Logo">
+        <p>&copy; 2026 Tolani Baj Academy. All rights reserved.</p>
+        <div class="footer-socials">
+            <a href="mailto:tbajacademy@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Email Us</span>
+            </a>
+            <a href="https://wa.me/2347071813399">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span>Send us message</span>
+            </a>
+        </div>
+
+    </footer>
+
+
+
+
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 4;
+
+function updateProgress() {
+    const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+    document.getElementById('progress-bar').style.width = progress + '%';
+    
+    document.querySelectorAll('.step-dot').forEach((dot, index) => {
+        if (index + 1 <= currentStep) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+function nextStep(step) {
+    if (step === 1) {
+        const name = document.getElementById('full_name').value;
+        const email = document.getElementById('email').value;
+        if (!name || !email) {
+            alert("Please fill in your name and email.");
+            return;
+        }
+    }
+
+    document.getElementById(`step-${step}`).classList.remove('active');
+    currentStep = step + 1;
+    document.getElementById(`step-${currentStep}`).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevStep(step) {
+    document.getElementById(`step-${step}`).classList.remove('active');
+    currentStep = step - 1;
+    document.getElementById(`step-${currentStep}`).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function togglePackage(e, plan) {
+    e.stopPropagation();
+    const extra = document.getElementById('extra-' + plan);
+    const toggle = e.currentTarget;
+    const span = toggle.querySelector('span');
+    const arrow = toggle.querySelector('.arrow');
+
+    if (extra.style.display === "block") {
+        extra.style.display = "none";
+        span.textContent = "See more";
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        extra.style.display = "block";
+        span.textContent = "See less";
+        arrow.style.transform = "rotate(180deg)";
+    }
+}
+
+function selectPackage(id) {
+    document.getElementById(id).checked = true;
+    document.querySelectorAll('.package').forEach(p => p.classList.remove('selected'));
+    document.getElementById(id).closest('.package').classList.add('selected');
+}
+
+async function submitRegistration() {
+    const form = document.getElementById('academy-form');
+    const selected = document.querySelector('input[name="package"]:checked');
+    const confirm = document.getElementById('confirm').checked;
+
+    if (!selected) {
+        alert("Please select a package to continue.");
+        return;
+    }
+
+    if (!confirm) {
+        alert("Please confirm your information.");
+        return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Submitting Registration...";
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    data["Package"] = selected.value.toUpperCase();
+    data["Experience"] = document.querySelector('input[name="exp"]:checked')?.value || 'Not specified';
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            btn.textContent = "Redirecting to Payment...";
+            setTimeout(() => {
+                window.location.href = `pay.html?plan=${selected.value}`;
+            }, 1000);
+        } else {
+            throw new Error("Formspark submission failed");
+        }
+    } catch (error) {
+        alert("There was an issue submitting your registration. Please try again.");
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
+}
+</script>
+
+</body>
+</html>
